@@ -1,0 +1,17 @@
+table {
+  width: 100%;
+  overflow: auto;
+}
+td,th{
+  min-width: 100px;
+  padding-right: 8px;
+  text-align: center;
+}
+th.mat-header-cell{
+  text-align: center;
+  background: ghostwhite;
+}
+button{
+  margin: 0 10px;
+}
+

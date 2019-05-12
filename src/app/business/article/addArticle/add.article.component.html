@@ -1,0 +1,123 @@
+<mat-toolbar >发布文章</mat-toolbar >
+<div class="personalInfo">
+  <form class="example-form">
+    <mat-form-field appearance="outline" class="example-full-width">
+      <mat-label>标题</mat-label>
+      <input matInput [(ngModel)]="userName" name="userName" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="example-full-width">
+      <mat-label>所属栏目</mat-label>
+      <mat-select [(ngModel)]="sel" name="sel" placeholder="This is the placeholder" required>
+        <mat-option value="0">生活常识</mat-option>
+        <mat-option value="1">程序下载</mat-option>
+        <mat-option value="2">饮食常识</mat-option>
+        <mat-option value="3">秘诀窍门</mat-option>
+      </mat-select>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+    <div class="_lable">内容：</div>
+    <div class="form-group has-feedback" style="padding-bottom: 20px;" [ngClass]="{ 'has-error': myckeditor.invalid && myckeditor.touched }">
+      <ckeditor [(ngModel)]="mycontent"
+                #myckeditor="ngModel"
+                name="myckeditor"
+                required
+                [config]="ckeConfig"
+                debounce="500"
+                (change)="onChange($event)">
+      </ckeditor>
+      <div *ngIf="myckeditor.invalid && myckeditor.touched" class="help-block">Required field.</div>
+    </div>
+    <mat-form-field appearance="outline" class="example-full-width">
+      <mat-label>关键词</mat-label>
+      <input matInput [(ngModel)]="userName" name="userName" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="example-full-width">
+      <mat-label>描述(Character count (100 max))</mat-label>
+      <textarea matInput
+                #characterCountTextareaHintExample
+                maxLength="100">Hello world. How are you?</textarea>
+      <mat-hint align="end" aria-live="polite" >
+        {{characterCountTextareaHintExample.value.length}} / 100
+      </mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="example-full-width">
+      <mat-label>跳转链接</mat-label>
+      <input matInput [(ngModel)]="userName" name="userName" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="发布时间">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <div>
+      <mat-form-field appearance="outline" class="example-full-width" style="width: 25%">
+        <mat-label>作者</mat-label>
+        <input matInput [(ngModel)]="userName" name="userName" required>
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="example-full-width" style="width: 25%">
+        <mat-label>来源</mat-label>
+        <input matInput [(ngModel)]="userName" name="userName" required>
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="example-full-width" style="width: 25%">
+        <mat-label>录入者</mat-label>
+        <input matInput [(ngModel)]="userName" name="userName" required>
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="example-full-width" style="width: 25%">
+        <mat-label>投稿者</mat-label>
+        <input matInput [(ngModel)]="userName" name="userName" required>
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="_lable">阅读权限：</div>
+    <div>
+      <mat-form-field appearance="outline" class="example-full-width" style="width: 25%">
+        <mat-label>等级</mat-label>
+        <mat-select [(ngModel)]="sel" name="sel" placeholder="This is the placeholder" required>
+          <mat-option value="0">vip0</mat-option>
+          <mat-option value="1">vip1</mat-option>
+          <mat-option value="2">vip2</mat-option>
+          <mat-option value="3">vip3</mat-option>
+        </mat-select>
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="example-full-width" style="width: 25%">
+        <mat-label>或者积分</mat-label>
+        <input matInput [(ngModel)]="userName" name="userName" required>
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+      <mat-checkbox [(ngModel)]="isAdmin" name="isAdmin" > 及以上</mat-checkbox>
+    </div>
+    <div class="checkbox-mar-bottom">
+      <mat-checkbox [(ngModel)]="isAdmin" name="isAdmin" > Check to make required:</mat-checkbox>
+    </div>
+  </form>
+</div>
+<!--<form role="form" #myForm="ngForm" accept-charset="UTF-8" novalidate style="padding: 0 50px">
+  <div class="form-group has-feedback"
+       [ngClass]="{ 'has-error': myckeditor.invalid && myckeditor.touched }">
+      <ckeditor [(ngModel)]="mycontent"
+                #myckeditor="ngModel"
+                name="myckeditor"
+                required
+                [config]="ckeConfig"
+                debounce="500"
+                (change)="onChange($event)">
+      </ckeditor>
+    <div *ngIf="myckeditor.invalid && myckeditor.touched" class="help-block">Required field.</div>
+  </div>
+  <button [disabled]="myForm.invalid" class="btn btn-primary">Save</button>
+</form>-->
+<div style="padding: 0 50px">
+  <div [innerHTML]="mycontent"></div>
+  <button mat-flat-button color="primary" (click)="submit()">保存</button>
+</div>
+
+
+
+

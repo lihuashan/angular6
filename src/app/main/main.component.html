@@ -1,0 +1,57 @@
+<!--<div>
+  <div>菜单<a routerLink="/app/user">登陆</a></div>
+  <div>
+    <div class="c-header">
+      头部
+    </div>
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>-->
+<mat-drawer-container class="example-container">
+  <mat-drawer class="left-nav" mode="side" opened>
+    <!--<div class="textAlign bgWhite">
+      <a class="marLR10 marTop20" routerLink="/app/personalInfo">修改个人资料</a>
+      <a class="marLR10 marTop20" routerLink="/app/changePassword">修改密码</a>
+      <span (click)="signOut()">退出</span>
+    </div>
+    <ul>
+      <li *ngFor="let item of navData">
+        <span>{{item.firstLevelMenu}}</span>
+        <ul>
+          <li *ngFor="let itemsub of item.firstLevelSubmenu"><a [routerLink]='itemsub.link'>{{itemsub.label}}</a></li>
+        </ul>
+      </li>
+    </ul>-->
+    <mat-tree [dataSource]="nestedDataSource" [treeControl]="nestedTreeControl" class="example-tree">
+      <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+        <li class="mat-tree-node" (click)="handleHelper(node)">
+          <button mat-icon-button></button>
+          <span *ngIf="navStatus==node.type" style="color: #ff0000">{{node.filename}}</span><!--:  {{node.type}}-->
+          <span *ngIf="navStatus!=node.type">{{node.filename}}</span><!--:  {{node.type}}-->
+        </li>
+      </mat-tree-node>
+
+      <mat-nested-tree-node *matTreeNodeDef="let node; when: hasNestedChild">
+        <li>
+          <div class="mat-tree-node">
+            <button mat-icon-button matTreeNodeToggle
+                    [attr.aria-label]="'toggle ' + node.filename">
+              <mat-icon class="mat-icon-rtl-mirror">
+                {{nestedTreeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+              </mat-icon>
+            </button>
+            {{node.filename}}
+          </div>
+          <ul [class.example-tree-invisible]="!nestedTreeControl.isExpanded(node)">
+            <ng-container matTreeNodeOutlet></ng-container>
+          </ul>
+        </li>
+      </mat-nested-tree-node>
+    </mat-tree>
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

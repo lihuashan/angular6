@@ -1,0 +1,48 @@
+.example-container {
+  height: 100vh;clear: both;
+}
+.left-nav{
+  width: 300px;
+  border: 0px solid #555;
+  background: lightslategrey;
+
+}
+.right-nav{
+  float: left;
+  background: aliceblue;
+}
+.example-tree-invisible {
+  display: none;
+}
+
+.picImg{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: 30px auto 0;
+  background: mediumslateblue;
+}
+ul{
+  padding-left: 0;
+}
+li {
+  padding: 0px  0px 0px 30px;
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style-type: none;
+  color: white;
+  background: lightslategrey;
+}
+.example-tree-invisible {
+  display: none;
+}
+
+.example-tree ul,
+.example-tree li {
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style-type: none;
+}
+
+
+

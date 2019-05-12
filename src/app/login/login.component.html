@@ -1,0 +1,27 @@
+<div class="relativeClassic LoginClassic">
+  <div class="absoluteClassic LoginFormClassic">
+    <!--<input type="text" class="form-control" name="name" placeholder="username"><br>
+    <input type="password" class="form-control" name="password" placeholder="password"><br>-->
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="name" [formControl]="nameFormControl"
+               [errorStateMatcher]="matcher">
+        <!--<mat-hint>Errors appear instantly!</mat-hint>-->
+        <mat-error *ngIf="nameFormControl.hasError('required')">
+          name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput type="password" placeholder="password" [formControl]="passwordFormControl"
+               [errorStateMatcher]="matcher">
+        <!--<mat-hint>Errors appear instantly!</mat-hint>-->
+        <mat-error *ngIf="passwordFormControl.hasError('required')">
+          password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </form>
+    <button type="button" mat-raised-button class="wd300 btn btn-primary" (click)="Login()">登录</button>
+  </div>
+</div>
+
+

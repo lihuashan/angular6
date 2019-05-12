@@ -1,0 +1,48 @@
+<mat-toolbar >修改个人资料</mat-toolbar >
+<div class="personalInfo">
+  <form class="example-form">
+    <mat-form-field appearance="outline" class="example-full-width">
+      <mat-label>用户名</mat-label>
+      <input matInput [(ngModel)]="userName" name="userName" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="example-full-width">
+      <mat-label>姓名</mat-label>
+      <input matInput [(ngModel)]="fullName" name="fullName" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="example-full-width">
+      <mat-label>性别</mat-label>
+      <mat-select [(ngModel)]="sel" name="sel" placeholder="This is the placeholder" required>
+        <mat-option value="1">男</mat-option>
+        <mat-option value="0">女</mat-option>
+      </mat-select>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="example-full-width">
+      <mat-label>联系电话</mat-label>
+      <input matInput [(ngModel)]="tel" name="tel" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="example-full-width">
+      <mat-label>电子邮箱</mat-label>
+      <input matInput [(ngModel)]="email" name="email" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="example-full-width">
+      <mat-label>详细地址(Character count (100 max))</mat-label>
+      <textarea matInput
+                #characterCountTextareaHintExample
+                maxLength="100">Hello world. How are you?</textarea>
+      <mat-hint align="end" aria-live="polite" >
+        {{characterCountTextareaHintExample.value.length}} / 100
+      </mat-hint>
+    </mat-form-field>
+    <div class="checkbox-mar-bottom">
+      <mat-checkbox [(ngModel)]="isAdmin" name="isAdmin" > Check to make required:</mat-checkbox>
+    </div>
+    <button mat-flat-button color="primary" (click)="submit()">保存</button>
+  </form>
+</div>
+
+

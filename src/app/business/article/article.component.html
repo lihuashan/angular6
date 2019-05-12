@@ -1,0 +1,41 @@
+<div *ngIf="hasList">
+  <mat-toolbar >文章管理<a class="marLR10 marTop20" routerLink="/app/addArticle"><button mat-flat-button color="primary">发布文章</button></a></mat-toolbar >
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="articleTitle" sticky>
+        <th mat-header-cell *matHeaderCellDef> 标题 </th>
+        <td mat-cell *matCellDef="let element"> {{element.articleTitle}}</td>
+      </ng-container>
+      <ng-container matColumnDef="articleContent">
+        <th mat-header-cell *matHeaderCellDef> 内容 </th>
+        <td mat-cell *matCellDef="let element"> {{element.articleContent}} </td>
+      </ng-container>
+      <ng-container matColumnDef="articleType">
+        <th mat-header-cell *matHeaderCellDef> 所属栏目 </th>
+        <td mat-cell *matCellDef="let element"> {{element.articleType}} </td>
+      </ng-container>
+      <ng-container matColumnDef="articleStatus">
+        <th mat-header-cell *matHeaderCellDef> 状态 </th>
+        <td mat-cell *matCellDef="let element"> {{element.articleStatus}} </td>
+      </ng-container>
+      <ng-container matColumnDef="articleDate">
+        <th mat-header-cell *matHeaderCellDef> 发布时间 </th>
+        <td mat-cell *matCellDef="let element"> {{element.articleDate}} </td>
+      </ng-container>
+      <ng-container matColumnDef="操作">
+        <th mat-header-cell *matHeaderCellDef> 操作 </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-button (click)="editItem(element)">编辑</button>
+          <button mat-flat-button color="primary">删除</button>
+          <button mat-flat-button color="accent">详情</button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator class="marTop20" [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons (page)="handlePageEvent($event)" [pageIndex]="pageIndex"></mat-paginator>
+  </div>
+  <div> Output event: {{pageEvent | json}} </div>
+</div>
+<div *ngIf="!hasList"><router-outlet></router-outlet></div>
+
